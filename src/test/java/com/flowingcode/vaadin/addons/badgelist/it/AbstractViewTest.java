@@ -1,6 +1,6 @@
 /*-
  * #%L
- * Template Add-on
+ * Badge List Add-on
  * %%
  * Copyright (C) 2023 Flowing Code
  * %%
@@ -17,8 +17,7 @@
  * limitations under the License.
  * #L%
  */
-
-package com.flowingcode.vaadin.addons.template.it;
+package com.flowingcode.vaadin.addons.badgelist.it;
 
 import com.vaadin.testbench.ScreenshotOnFailureRule;
 import com.vaadin.testbench.TestBench;

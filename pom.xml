@@ -5,13 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.vaadin.addons.flowingcode</groupId>
-	<artifactId>template-addon</artifactId>
+	<artifactId>badge-list-addon</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>Template Add-on</name>
-	<description>Template Add-on for Vaadin Flow</description>
+	<name>Badge List Add-on</name>
+	<description>Badge List Add-on for Vaadin Flow</description>
 
 	<properties>
-        <vaadin.version>24.1.2</vaadin.version>
+        <vaadin.version>24.1.6</vaadin.version>
         <selenium.version>4.10.0</selenium.version>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
@@ -19,7 +19,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<drivers.dir>${project.basedir}/drivers</drivers.dir>
 		<jetty.version>11.0.12</jetty.version>
-		<flowingcode.commons.demo.version>3.6.0</flowingcode.commons.demo.version>
+		<flowingcode.commons.demo.version>3.8.0-SNAPSHOT</flowingcode.commons.demo.version>
 		<frontend.hotdeploy>true</frontend.hotdeploy>
 	</properties>
 
@@ -38,9 +38,9 @@
 	</licenses>
 
 	<scm>
-		<url>https://github.com/FlowingCode/AddonStarter24</url>
-		<connection>scm:git:git://github.com/FlowingCode/AddonStarter24.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:/FlowingCode/AddonStarter24.git</developerConnection>
+		<url>https://github.com/FlowingCode/BadgeList</url>
+		<connection>scm:git:git://github.com/FlowingCode/BadgeList.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:/FlowingCode/BadgeList.git</developerConnection>
 		<tag>master</tag>
 	</scm>
 
@@ -95,6 +95,11 @@
         <repository>
             <id>flowing-releases</id>
             <url>https://maven.flowingcode.com/releases</url>
+        </repository>
+		<!-- Repository needed for the snapshot versions of commons-demo -->
+		<repository>
+            <id>flowing-snapshots</id>
+            <url>https://maven.flowingcode.com/snapshots</url>
         </repository>
 	</repositories>
 
@@ -156,6 +161,18 @@
 			<artifactId>webdrivermanager</artifactId>
             <version>5.1.1</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+    		<groupId>com.github.javafaker</groupId>
+    		<artifactId>javafaker</artifactId>
+    		<version>1.0.2</version>
+    		<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -243,7 +260,6 @@
 					<useTestScope>true</useTestScope>
 					<webApp>
 						<resourceBases>
-							<resourceBase>src/test/resources/META-INF/resources</resourceBase>
 							<resourceBase>src/main/resources/META-INF/resources</resourceBase>
 						</resourceBases>
 					</webApp>

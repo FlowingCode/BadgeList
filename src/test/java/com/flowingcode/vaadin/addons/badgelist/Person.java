@@ -1,6 +1,6 @@
 /*-
  * #%L
- * Template Add-on
+ * Badge List Add-on
  * %%
  * Copyright (C) 2023 Flowing Code
  * %%
@@ -17,16 +17,27 @@
  * limitations under the License.
  * #L%
  */
+package com.flowingcode.vaadin.addons.badgelist;
 
-package com.flowingcode.vaadin.addons.template;
+import java.util.List;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
 
-import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.JsModule;
-import com.vaadin.flow.component.dependency.NpmPackage;
-import com.vaadin.flow.component.html.Div;
-
-@SuppressWarnings("serial")
-@NpmPackage(value = "@polymer/paper-input", version = "3.2.1")
-@JsModule("@polymer/paper-input/paper-input.js")
-@Tag("paper-input")
-public class TemplateAddon extends Div {}
+@Getter
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@EqualsAndHashCode
+@Builder
+public class Person {
+  boolean active;
+  String firstName;
+  String lastName;
+  String emailAddress;
+  String phoneNumber;
+  String title;
+  List<String> roles;
+}
