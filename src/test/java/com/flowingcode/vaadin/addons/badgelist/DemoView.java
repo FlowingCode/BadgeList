@@ -1,6 +1,6 @@
 /*-
  * #%L
- * Template Add-on
+ * Badge List Add-on
  * %%
  * Copyright (C) 2023 Flowing Code
  * %%
@@ -17,8 +17,7 @@
  * limitations under the License.
  * #L%
  */
-
-package com.flowingcode.vaadin.addons.template;
+package com.flowingcode.vaadin.addons.badgelist;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.BeforeEnterEvent;
@@ -31,6 +30,6 @@ public class DemoView extends VerticalLayout implements BeforeEnterObserver {
 
   @Override
   public void beforeEnter(BeforeEnterEvent event) {
-    event.forwardTo(TemplateDemoView.class);
+    event.forwardTo(BadgeListDemoView.class);
   }
 }

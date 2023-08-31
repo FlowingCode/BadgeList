@@ -1,6 +1,6 @@
 /*-
  * #%L
- * Template Add-on
+ * Badge List Add-on
  * %%
  * Copyright (C) 2023 Flowing Code
  * %%
@@ -17,14 +17,15 @@
  * limitations under the License.
  * #L%
  */
-package com.flowingcode.vaadin.addons.template.test;
+package com.flowingcode.vaadin.addons.badgelist.test;
 
-import com.flowingcode.vaadin.addons.template.TemplateAddon;
+import com.flowingcode.vaadin.addons.badgelist.BadgeList;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -44,7 +45,7 @@ public class SerializationTest {
   @Test
   public void testSerialization() throws ClassNotFoundException, IOException {
     try {
-      testSerializationOf(new TemplateAddon());
+      testSerializationOf(new BadgeList(new ArrayList<>()));
     } catch (Exception e) {
       Assert.fail("Problem while testing serialization: " + e.getMessage());
     }

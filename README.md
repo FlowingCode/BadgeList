@@ -1,22 +1,18 @@
-[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/template-addon)
-[![Stars on vaadin.com/directory](https://img.shields.io/vaadin-directory/star/app-layout-addon.svg)](https://vaadin.com/directory/component/template-addon)
-[![Build Status](https://jenkins.flowingcode.com/job/template-addon/badge/icon)](https://jenkins.flowingcode.com/job/template-addon)
+[![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/badge-list-add-on)
+[![Stars on vaadin.com/directory](https://img.shields.io/vaadin-directory/star/badge-list-add-on.svg)](https://vaadin.com/directory/component/badge-list-add-on)
+[![Build Status](https://jenkins.flowingcode.com/job/BadgeList-addon/badge/icon)](https://jenkins.flowingcode.com/job/BadgeList-addon)
 
-# Template Add-on
+# Badge List Add-on
 
-This is a template project for building new Vaadin 24 add-ons
-
-## Features
-
-* List the features of your add-on in here
+Responsive badge list component.
 
 ## Online demo
 
-[Online demo here](http://addonsv24.flowingcode.com/template)
+[Online demo here](http://addonsv24.flowingcode.com/badge-list)
 
 ## Download release
 
-[Available in Vaadin Directory](https://vaadin.com/directory/component/template-addon)
+[Available in Vaadin Directory](https://vaadin.com/directory/component/badge-list-add-on)
 
 ### Maven install
 
@@ -25,7 +21,7 @@ Add the following dependencies in your pom.xml file:
 ```xml
 <dependency>
    <groupId>org.vaadin.addons.flowingcode</groupId>
-   <artifactId>template-addon</artifactId>
+   <artifactId>badge-list-addon</artifactId>
    <version>X.Y.Z</version>
 </dependency>
 ```
@@ -49,7 +45,7 @@ To see the demo, navigate to http://localhost:8080/
 
 ## Release notes
 
-See [here](https://github.com/FlowingCode/TemplateAddon/releases)
+See [here](https://github.com/FlowingCode/BadgeList/releases)
 
 ## Issue tracking
 
@@ -74,17 +70,25 @@ Then, follow these steps for creating a contribution:
 
 This add-on is distributed under Apache License 2.0. For license terms, see LICENSE.txt.
 
-TEMPLATE_ADDON is written by Flowing Code S.A.
+Badge List Add-on is written by Flowing Code S.A.
 
 # Developer Guide
 
 ## Getting started
 
-Add your code samples in this section
+```java
+ Div div = new Div();
+ List<String> roles = Arrays.asList("ADMIN", "USERS", "MOD", "DEV1", "DEV2");
+ List<Badge> badges = new ArrayList<>();
+ roles.forEach(role -> badges.add(new Badge(role)));
+ BadgeList badgeList = new BadgeList(badges);
+ div.add(badgeList);
+ add(div);
+```
 
 ## Special configuration when using Spring
 
-By default, Vaadin Flow only includes ```com/vaadin/flow/component``` to be always scanned for UI components and views. For this reason, the addon might need to be whitelisted in order to display correctly. 
+By default, Vaadin Flow only includes ```com/vaadin/flow/component``` to be always scanned for UI components and views. For this reason, the add-on might need to be whitelisted in order to display correctly. 
 
 To do so, just add ```com.flowingcode``` to the ```vaadin.whitelisted-packages``` property in ```src/main/resources/application.properties```, like:
 

@@ -1,6 +1,6 @@
 /*-
  * #%L
- * Template Add-on
+ * Badge List Add-on
  * %%
  * Copyright (C) 2023 Flowing Code
  * %%
@@ -17,22 +17,27 @@
  * limitations under the License.
  * #L%
  */
-package com.flowingcode.vaadin.addons.template;
+package com.flowingcode.vaadin.addons.badgelist;
 
 import com.flowingcode.vaadin.addons.DemoLayout;
+import com.flowingcode.vaadin.addons.GithubBranch;
 import com.flowingcode.vaadin.addons.GithubLink;
 import com.flowingcode.vaadin.addons.demo.TabbedDemo;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.router.ParentLayout;
 import com.vaadin.flow.router.Route;
 
 @SuppressWarnings("serial")
 @ParentLayout(DemoLayout.class)
-@Route("template")
-@GithubLink("https://github.com/FlowingCode/AddonStarter24")
-public class TemplateDemoView extends TabbedDemo {
+@Route("badge-list")
+@GithubLink("https://github.com/FlowingCode/BadgeList")
+@CssImport("./styles/badge-list-demo-styles.css")
+@GithubBranch("initial-implementation")
+public class BadgeListDemoView extends TabbedDemo {
 
-  public TemplateDemoView() {
-    addDemo(TemplateDemo.class);
+  public BadgeListDemoView() {
+    addDemo(BadgeListDemo.class);
+    addDemo(StyledBadgesDemo.class);
     setSizeFull();
   }
 }
