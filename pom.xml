@@ -19,7 +19,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<drivers.dir>${project.basedir}/drivers</drivers.dir>
 		<jetty.version>11.0.12</jetty.version>
-		<flowingcode.commons.demo.version>3.8.0-SNAPSHOT</flowingcode.commons.demo.version>
+		<flowingcode.commons.demo.version>3.8.0</flowingcode.commons.demo.version>
 		<frontend.hotdeploy>true</frontend.hotdeploy>
 	</properties>
 
@@ -95,11 +95,6 @@
         <repository>
             <id>flowing-releases</id>
             <url>https://maven.flowingcode.com/releases</url>
-        </repository>
-		<!-- Repository needed for the snapshot versions of commons-demo -->
-		<repository>
-            <id>flowing-snapshots</id>
-            <url>https://maven.flowingcode.com/snapshots</url>
         </repository>
 	</repositories>
 
