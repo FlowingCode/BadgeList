@@ -4,7 +4,7 @@
 
 	<groupId>org.vaadin.addons.flowingcode</groupId>
 	<artifactId>badge-list-addon</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>Badge List Add-on</name>
 	<description>Badge List Add-on for Vaadin Flow</description>
 
@@ -39,7 +39,7 @@
 		<url>https://github.com/FlowingCode/BadgeList</url>
 		<connection>scm:git:git://github.com/FlowingCode/BadgeList.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com:/FlowingCode/BadgeList.git</developerConnection>
-		<tag>1.0.0</tag>
+		<tag>master</tag>
 	</scm>
 
         <developers>
