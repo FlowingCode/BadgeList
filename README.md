@@ -6,6 +6,12 @@
 
 Responsive badge list component.
 
+## Features
+
+* The badges that don't fit into the current width of the list collapse automatically into an overflow badge at the end.
+* The oveflow badge shows count of not visible badges.
+* Right-clickling on the overflow count badge displays a list with the not visible badges. 
+
 ## Online demo
 
 [Online demo here](http://addonsv24.flowingcode.com/badge-list)
