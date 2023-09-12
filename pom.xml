@@ -9,7 +9,8 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<name>Badge List Add-on</name>
 	<description>Badge List Add-on for Vaadin Flow</description>
-
+	<url>https://www.flowingcode.com/en/open-source/</url>
+	
 	<properties>
         <vaadin.version>24.1.6</vaadin.version>
         <selenium.version>4.10.0</selenium.version>
