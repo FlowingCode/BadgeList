@@ -32,7 +32,7 @@ import com.vaadin.flow.router.Route;
 @Route("badge-list")
 @GithubLink("https://github.com/FlowingCode/BadgeList")
 @CssImport("./styles/badge-list-demo-styles.css")
-@GithubBranch("initial-implementation")
+@GithubBranch("master")
 public class BadgeListDemoView extends TabbedDemo {
 
   public BadgeListDemoView() {
