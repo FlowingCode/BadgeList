@@ -1,6 +1,7 @@
 [![Published on Vaadin Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/badge-list-add-on)
 [![Stars on vaadin.com/directory](https://img.shields.io/vaadin-directory/star/badge-list-add-on.svg)](https://vaadin.com/directory/component/badge-list-add-on)
 [![Build Status](https://jenkins.flowingcode.com/job/BadgeList-addon/badge/icon)](https://jenkins.flowingcode.com/job/BadgeList-addon)
+[![Maven Central](https://img.shields.io/maven-central/v/com.flowingcode.vaadin.addons/badge-list-addon)](https://mvnrepository.com/artifact/com.flowingcode.vaadin.addons/badge-list-addon)
 
 # Badge List Add-on
 
