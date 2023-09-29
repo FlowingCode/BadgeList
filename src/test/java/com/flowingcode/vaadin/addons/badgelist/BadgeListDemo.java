@@ -38,21 +38,19 @@ public class BadgeListDemo extends BaseBadgeListDemo {
 
     grid.addColumn(Person::getFirstName).setHeader("First Name").setAutoWidth(true).setFlexGrow(0);
     grid.addColumn(Person::getLastName).setHeader("Last Name").setAutoWidth(true).setFlexGrow(0);
+    grid.addComponentColumn(
+        person -> {
+          List<Badge> badges = new ArrayList<>();
+          person.getRoles().forEach(role -> badges.add(new Badge(role)));
+          return new BadgeList(badges);
+        })
+    .setHeader("Roles")
+    .setResizable(true);
     grid.addColumn(Person::getEmailAddress).setHeader("Email").setAutoWidth(true).setFlexGrow(0);
     grid.addColumn(Person::getPhoneNumber)
         .setHeader("Phone number")
         .setAutoWidth(true)
         .setFlexGrow(0);
-
-    grid.addComponentColumn(
-            person -> {
-              List<Badge> badges = new ArrayList<>();
-              person.getRoles().forEach(role -> badges.add(new Badge(role)));
-              return new BadgeList(badges);
-            })
-        .setHeader("Roles")
-        .setResizable(true);
-
     grid.addColumn(Person::getTitle).setHeader("Title");
 
     grid.setWidthFull();
