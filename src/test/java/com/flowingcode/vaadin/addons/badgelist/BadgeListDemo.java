@@ -54,9 +54,11 @@ public class BadgeListDemo extends BaseBadgeListDemo {
     grid.addColumn(Person::getTitle).setHeader("Title");
 
     grid.setWidthFull();
-    add(grid); // show-source
+    // show-source add(grid);
+    // #if vaadin eq 0
     add(
         this.createContainerDiv(
-            "BadgeList as part of resizable column 'Roles'", grid)); // hide-source
+            "BadgeList as part of resizable column 'Roles'", grid)); 
+    // #endif
   }
 }
