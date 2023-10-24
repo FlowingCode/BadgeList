@@ -141,9 +141,9 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
       const element = badges[i];
 
       let elementStyle = getComputedStyle(element);
-      let elementWidth = element.offsetWidth + parseInt(elementStyle.marginInline);
-
-      if (elementWidth < remainingWidth) {
+      let elementWidth = element.offsetWidth + parseInt(elementStyle.marginInlineStart) + parseInt(elementStyle.marginInlineEnd);
+   
+      if (elementWidth <= remainingWidth) {
         remainingWidth = remainingWidth - elementWidth;
       } else {
         removeFromIndex = i;
