@@ -47,14 +47,14 @@ public class StyledBadgesDemo extends BaseBadgeListDemo {
     BadgeList badgeList1 = new BadgeList(badges1);
     Div layout1 = new Div(badgeList1);
     layout1.setWidth("350px");
-    // show-source add(layout1);
-    Div example1 =
-        this.createContainerDiv(
-            "Badges with 'Error' and 'Primary' variants", layout1); // hide-source
+    // #if vaadin eq 0
+    Div example1 = this.createContainerDiv("Badges with 'Error' and 'Primary' variants", layout1);
     SourceCodeViewer.highlightOnHover(example1, "example1");
-    add(example1); // hide-source
+    add(example1);
+    this.addSeparator();
+    // #endif
+    // show-source add(layout1);
     // end-block
-    this.addSeparator(); // hide-source
 
     // begin-block example2
     List<Badge> badges2 = new ArrayList<>();
@@ -67,12 +67,14 @@ public class StyledBadgesDemo extends BaseBadgeListDemo {
     badgeList2.addClassName("styled-badges-second-example");
     Div layout2 = new Div(badgeList2);
     layout2.setWidth("450px");
-    Div example2 = this.createContainerDiv("Badges with custom styling", layout2); // hide-source
-    // show-source add(layout2);
+    // #if vaadin eq 0
+    Div example2 = this.createContainerDiv("Badges with custom styling", layout2);
     SourceCodeViewer.highlightOnHover(example2, "example2");
-    add(example2); // hide-source
+    add(example2);
+    this.addSeparator();
+    // #endif
+    // show-source add(layout2);
     // end-block
-    this.addSeparator(); // hide-source
 
     // begin-block example3
     List<Badge> badges3 = new ArrayList<>();
@@ -84,13 +86,13 @@ public class StyledBadgesDemo extends BaseBadgeListDemo {
     BadgeList badgeList3 = new BadgeList(badges3);
     badgeList3.addThemeName("success");
     Div layout3 = new Div(badgeList3);
-    Div example3 =
-        this.createContainerDiv(
-            "Badges & Overflow with 'Success' variant and badges with icon",
-            layout3); // hide-source
-    // show-source add(layout3);
+    // #if vaadin eq 0
+    Div example3 = this.createContainerDiv(
+        "Badges & Overflow with 'Success' variant and badges with icon", layout3);
     SourceCodeViewer.highlightOnHover(example3, "example3");
-    add(example3); // hide-source
+    add(example3);
+    // #endif
+    // show-source add(layout3);
     // end-block
   }
 
