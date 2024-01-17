@@ -37,6 +37,7 @@ import java.util.List;
 public class StyledBadgesDemo extends BaseBadgeListDemo {
 
   public StyledBadgesDemo() {
+
     // begin-block example1
     List<Badge> badges1 = new ArrayList<>();
     for (int i = 0; i < 8; i++) {
@@ -94,6 +95,7 @@ public class StyledBadgesDemo extends BaseBadgeListDemo {
     // #endif
     // show-source add(layout3);
     // end-block
+
   }
 
   // #if vaadin eq 0
@@ -101,5 +103,6 @@ public class StyledBadgesDemo extends BaseBadgeListDemo {
     Icon icon = vaadinIcon.create();
     icon.getStyle().set("padding", "var(--lumo-space-xs");
     return icon;
-  } // #endif
+  }
+  // #endif
 }
