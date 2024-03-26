@@ -44,6 +44,10 @@ public class TestData {
   public static List<Person> initializeData() {
     return Stream.generate(TestData::newPerson).limit(8).collect(Collectors.toList());
   }
+  
+  public static Person singlePerson() {
+    return newPerson();
+  }
 
   private static List<String> generateRoles() {
     List<String> roles = new ArrayList<>();

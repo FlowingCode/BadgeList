@@ -39,6 +39,11 @@ import java.util.List;
 public class BadgeList extends Component implements HasTheme, HasSize {
 
   private List<Badge> badges = new ArrayList<>();
+  
+  /**
+   * Creates a new instance of BadgeList.
+   */
+  public BadgeList() {}
 
   /**
    * Creates a new instance of BadgeList with the supplied list of {@link Badge badges}.
@@ -46,15 +51,31 @@ public class BadgeList extends Component implements HasTheme, HasSize {
    * @param badges list of badges
    */
   public BadgeList(List<Badge> badges) {
+    this.setBadges(badges);
+  }
+  
+  /**
+   * Sets a list of {@link Badge badges} to the BadgeList component.
+   * 
+   * @param badges the list of badges to add
+   */
+  public void setBadges(List<Badge> badges) {
+    this.clearBadges();
     this.badges = badges;
     this.addBadges();
   }
 
   private void addBadges() {
-    this.badges.forEach(
-        badge -> {
-          badge.getElement().setAttribute("slot", "badges");
-          this.getElement().appendChild(badge.getElement());
-        });
+    this.badges.forEach(badge -> {
+      badge.getElement().setAttribute("slot", "badges");
+      this.getElement().appendChild(badge.getElement());
+    });
+  }
+  
+  private void clearBadges() {
+    this.badges.forEach(badge -> {
+      badge.getElement().removeAttribute("slot");
+      badge.removeFromParent();
+    });
   }
 }

@@ -38,6 +38,7 @@ public class BadgeListDemoView extends TabbedDemo {
   public BadgeListDemoView() {
     addDemo(BadgeListDemo.class);
     addDemo(StyledBadgesDemo.class);
+    addDemo(ReadOnlyBinderDemo.class);
     setSizeFull();
   }
 }

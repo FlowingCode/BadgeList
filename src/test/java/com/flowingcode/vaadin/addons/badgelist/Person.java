@@ -20,16 +20,15 @@
 package com.flowingcode.vaadin.addons.badgelist;
 
 import java.util.List;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.experimental.FieldDefaults;
+import lombok.Setter;
 
 @Getter
+@Setter
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @EqualsAndHashCode
 @Builder
 public class Person {

@@ -36,3 +36,9 @@ fc-badge-list[class="styled-badges-second-example"]::part(overflow-badge), .cust
 	border: 1px green dashed;
 	border-radius: 0;
 }
+
+.readonly-badge-list-label {
+	color: var(--lumo-secondary-text-color);
+    font-weight: 500;
+    font-size: var(--lumo-font-size-s);
+}
