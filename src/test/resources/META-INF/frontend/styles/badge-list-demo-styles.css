@@ -2,7 +2,7 @@
  * #%L
  * Badge List Add-on
  * %%
- * Copyright (C) 2023 Flowing Code
+ * Copyright (C) 2023 - 2024 Flowing Code
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,4 +35,10 @@ fc-badge-list[class="styled-badges-second-example"]::part(overflow-badge), .cust
 	color: green;
 	border: 1px green dashed;
 	border-radius: 0;
+}
+
+.readonly-badge-list-label {
+	color: var(--lumo-secondary-text-color);
+    font-weight: 500;
+    font-size: var(--lumo-font-size-s);
 }

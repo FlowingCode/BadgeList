@@ -2,7 +2,7 @@
  * #%L
  * Badge List Add-on
  * %%
- * Copyright (C) 2023 Flowing Code
+ * Copyright (C) 2023 - 2024 Flowing Code
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,10 @@ public class TestData {
 
   public static List<Person> initializeData() {
     return Stream.generate(TestData::newPerson).limit(8).collect(Collectors.toList());
+  }
+  
+  public static Person singlePerson() {
+    return newPerson();
   }
 
   private static List<String> generateRoles() {
