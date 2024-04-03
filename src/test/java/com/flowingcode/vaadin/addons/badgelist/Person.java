@@ -19,6 +19,7 @@
  */
 package com.flowingcode.vaadin.addons.badgelist;
 
+import java.io.Serializable;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,7 +32,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Builder
-public class Person {
+@SuppressWarnings("serial")
+public class Person implements Serializable {
   boolean active;
   String firstName;
   String lastName;
