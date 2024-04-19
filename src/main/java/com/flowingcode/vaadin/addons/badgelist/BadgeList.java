@@ -20,6 +20,7 @@
 package com.flowingcode.vaadin.addons.badgelist;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasLabel;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.Tag;
@@ -36,7 +37,7 @@ import java.util.List;
 @JsModule("@vaadin/vaadin-lumo-styles/badge-global.js")
 @JsModule("./src/fc-badge-list.ts")
 @Tag("fc-badge-list")
-public class BadgeList extends Component implements HasTheme, HasSize {
+public class BadgeList extends Component implements HasTheme, HasSize, HasLabel {
 
   private List<Badge> badges = new ArrayList<>();
   
@@ -44,6 +45,16 @@ public class BadgeList extends Component implements HasTheme, HasSize {
    * Creates a new instance of BadgeList.
    */
   public BadgeList() {}
+  
+  /**
+   * Creates a new instance of BadgeList with the given label.
+   * 
+   * @param label the BadgeList label
+   */
+  public BadgeList(String label) {
+    this();
+    this.setLabel(label);
+  }
 
   /**
    * Creates a new instance of BadgeList with the supplied list of {@link Badge badges}.
@@ -78,4 +89,5 @@ public class BadgeList extends Component implements HasTheme, HasSize {
       badge.removeFromParent();
     });
   }
+
 }
