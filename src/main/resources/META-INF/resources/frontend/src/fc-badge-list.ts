@@ -42,7 +42,10 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
 
   @property()
   theme : string | null = null;
-
+  
+  @property()
+  label : ''
+    
   @state()
   private overflowItems: ContextMenuItem[] = [];
 
@@ -52,10 +55,18 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
     
     :host {
       --badge-list-badges-margin: 0 calc(var(--lumo-space-s) / 2);
+      --badge-list-label-color: var(--lumo-secondary-text-color);
+      --badge-list-label-font-weight: 500;
+      --badge-list-label-font-size: var(--lumo-font-size-s);
+      --badge-list-label-margin-left: calc(var(--lumo-border-radius-m) / 4);
     }
     
     [part="container"] ::slotted(span[theme~="badge"]) {
 	    margin: var(--badge-list-badges-margin);
+    }
+
+    [part="container"] ::slotted(span[theme~="badge"]:first-child) {
+	    margin-left: 0;
     }
     
     [hidden] {
@@ -73,6 +84,26 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
     [part="overflow-badge"] {
       margin: var(--badge-list-badges-margin);
     }   
+
+    [part="label"] {
+      align-self: flex-start;
+      color: var(--badge-list-label-color);
+      font-weight: var(--badge-list-label-font-weight);
+      font-size: var(--badge-list-label-font-size);
+      margin-left: var(--badge-list-label-margin-left);
+      transition: color 0.2s;
+      line-height: inherit;
+      padding-right: 1em;
+      padding-bottom: 0.5em;
+      padding-top: 0.25em;
+      margin-top: -0.25em;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      position: relative;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
     `
   ];
 
@@ -185,8 +216,11 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
 
   render() {
     return html`
-      <div part="container" class="container">
-        <slot name="badges"></slot>
+      <div part="label">
+          <label for="container">${this.label}</label>
+      </div>
+      <div part="container" class="container" id="container">
+   	    <slot name="badges"></slot>
         <vaadin-context-menu open-on="click" .items=${this.overflowItems}>
         	<span part="overflow-badge" theme="badge ${this.theme}" class="overflow-badge" hidden>
             <vaadin-icon icon="lumo:plus" style="padding: var(--lumo-space-xs)"></vaadin-icon>
