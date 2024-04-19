@@ -63,7 +63,7 @@ public class ReadOnlyBinderDemo extends BaseBadgeListDemo {
         IntStream.rangeClosed(1, 12).mapToObj(i -> "ROLE" + i).collect(Collectors.toList());
     rolesComboBox.setItems(roles);
 
-    rolesBadgeList = new BadgeList();
+    rolesBadgeList = new BadgeList("Roles");
     readonlyBadgeList = new ReadOnlyHasValue<List<Badge>>(rolesBadgeList::setBadges);
 
     binder = new Binder<>();
@@ -81,9 +81,6 @@ public class ReadOnlyBinderDemo extends BaseBadgeListDemo {
     buttonsLayout.setJustifyContentMode(JustifyContentMode.END);
 
     VerticalLayout layout = new VerticalLayout();
-    Span span = new Span("Roles");
-    span.addClassName("readonly-badge-list-label");
-    rolesBadgeListDiv.add(span);
     rolesBadgeListDiv.setWidth("450px");
     rolesBadgeListDiv.add(rolesBadgeList);
     layout.add(firstName, lastName, rolesComboBox, rolesBadgeListDiv);
