@@ -11,7 +11,9 @@ Responsive badge list component.
 
 * The badges that don't fit into the current width of the list collapse automatically into an overflow badge at the end.
 * The overflow badge shows count of not visible badges.
-* Clicking on the overflow count badge displays a list with the not visible badges. 
+* Clicking on the overflow count badge displays a list with the not visible badges.
+* Read-only Binder Support
+* Label Support
 
 ## Online demo
 
