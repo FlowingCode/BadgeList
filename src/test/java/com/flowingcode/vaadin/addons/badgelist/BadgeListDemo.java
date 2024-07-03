@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @DemoSource
-@PageTitle("Badge List Basic Demo")
+@PageTitle("Basic Demo")
 @SuppressWarnings("serial")
 @Route(value = "badge-list/basic", layout = BadgeListDemoView.class)
 public class BadgeListDemo extends BaseBadgeListDemo {
