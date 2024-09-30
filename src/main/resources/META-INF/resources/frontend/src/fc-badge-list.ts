@@ -85,6 +85,10 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
       margin: var(--badge-list-badges-margin);
     }   
 
+    :host(:not([has-label])) [part='label']{
+      display:none;
+    }
+
     [part="label"] {
       align-self: flex-start;
       color: var(--badge-list-label-color);
@@ -229,6 +233,13 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
       	</vaadin-context-menu>        
       </div>
     `;
+  }
+  
+  update(_changedProperties: Map<PropertyKey, unknown>) {
+    if (_changedProperties.has('label')) {
+      this.toggleAttribute('has-label', this.label != null);
+    }
+    super.update(_changedProperties);
   }
 
 }
