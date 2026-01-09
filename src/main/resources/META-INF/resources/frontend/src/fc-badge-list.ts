@@ -20,7 +20,7 @@
 import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
 import '@vaadin/context-menu';
 import type { ContextMenuItem } from '@vaadin/context-menu';
-import { badge } from '@vaadin/vaadin-lumo-styles/badge.js';
+import badgeStylesContent from '../styles/badge.css?inline';
 import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { css, html, LitElement } from 'lit';
 import { customElement, property, query, queryAssignedNodes, state } from 'lit/decorators.js';
@@ -50,7 +50,7 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
   private overflowItems: ContextMenuItem[] = [];
 
   static styles = [
-    badge.styleSheet,
+    badgeStylesContent,
     css`      
     
     :host {
