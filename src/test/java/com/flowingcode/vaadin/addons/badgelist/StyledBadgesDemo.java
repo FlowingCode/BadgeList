@@ -2,7 +2,7 @@
  * #%L
  * Badge List Add-on
  * %%
- * Copyright (C) 2023 - 2024 Flowing Code
+ * Copyright (C) 2023 - 2026 Flowing Code
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ package com.flowingcode.vaadin.addons.badgelist;
 
 import com.flowingcode.vaadin.addons.demo.DemoSource;
 import com.flowingcode.vaadin.addons.demo.SourceCodeViewer;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
@@ -31,8 +32,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @DemoSource
+// #if vaadin eq 0
+@DemoSource(value = "/src/test/resources/META-INF/frontend/styles/styled-badges-demo.css",
+    caption = "styled-badges-demo.css")
+// #endif
 @PageTitle("Styled Badges Demo")
 @SuppressWarnings("serial")
+@CssImport("./styles/styled-badges-demo.css")
 @Route(value = "badge-list/styled", layout = BadgeListDemoView.class)
 public class StyledBadgesDemo extends BaseBadgeListDemo {
 
