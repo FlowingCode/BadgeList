@@ -501,6 +501,13 @@
 				<vaadin.version>25.0.2</vaadin.version>
 				<jetty.version>11.0.26</jetty.version>
 			</properties>		
+			<dependencies>
+                <dependency>
+                    <groupId>com.vaadin</groupId>
+                    <artifactId>vaadin-dev</artifactId>
+                    <optional>true</optional>
+                </dependency>
+            </dependencies>
 		</profile>
 		
 	</profiles>
