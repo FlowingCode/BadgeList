@@ -17,15 +17,11 @@
  * limitations under the License.
  * #L%
  */
-.badge-list-container {
-	text-align: left;
-	padding-bottom: 10px;
-	padding-left: 20px;
+ 
+fc-badge-list.styled-badges-second-example::part(overflow-badge), .custom-styled-badge {
+    background-color: lightgreen;
+    color: green;
+    border: 1px green dashed;
+    border-radius: 0;
 }
-
-.badge-list-container .title-span {
-	font-size: var(--lumo-font-size-l);
-	font-weight: 600;
-	display: block;
-	padding: 5px 0 10px 0;
-}
+ 
