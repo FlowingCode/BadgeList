@@ -1,0 +1,8 @@
+/* FOR VAADIN 25 */
+/* for hidden badges in the overflow badge */
+.custom-styled-badge {
+    background-color: lightgreen;
+    color: green;
+    border: 1px green dashed;
+    border-radius: 0;
+}
