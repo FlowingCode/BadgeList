@@ -32,19 +32,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 @DemoSource
-// #if vaadin eq 0
+//#if vaadin eq 0
 @DemoSource(value = "/src/test/resources/META-INF/frontend/styles/styled-badges-demo.css",
     caption = "styled-badges-demo.css")
-// #endif
+@DemoSource(value = "/src/test/resources/META-INF/frontend/styles/styled-badges-demo-v25.css",
+    caption = "styled-badges-demo-v25.css")
+@DemoSource(value = "/src/test/resources/META-INF/frontend/styles/fc-badge-list.css",
+    caption = "fc-badge-list.css")
+//#endif
 @PageTitle("Styled Badges Demo")
 @SuppressWarnings("serial")
+//#if vaadin eq 24
 @CssImport("./styles/styled-badges-demo.css")
+//#else
+@CssImport(value = "./styles/fc-badge-list.css", themeFor = "fc-badge-list")
+@CssImport("./styles/styled-badges-demo-v25.css")
+//#endif
 @Route(value = "badge-list/styled", layout = BadgeListDemoView.class)
 public class StyledBadgesDemo extends BaseBadgeListDemo {
 
   public StyledBadgesDemo() {
-
-    // begin-block example1
+    // begin-block example1 
     List<Badge> badges1 = new ArrayList<>();
     for (int i = 0; i < 8; i++) {
       Badge badge = new Badge("BADGE" + (i + 1));
@@ -101,7 +109,6 @@ public class StyledBadgesDemo extends BaseBadgeListDemo {
     // #endif
     // show-source add(layout3);
     // end-block
-
   }
 
   // #if vaadin eq 0
