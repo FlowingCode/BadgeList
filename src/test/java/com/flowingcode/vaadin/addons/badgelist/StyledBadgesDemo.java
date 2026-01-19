@@ -34,11 +34,11 @@ import java.util.List;
 @DemoSource
 //#if vaadin eq 0
 @DemoSource(value = "/src/test/resources/META-INF/frontend/styles/styled-badges-demo.css",
-    caption = "styled-badges-demo.css")
+    caption = "styled-badges-demo.css", condition = "vaadin eq 24")
 @DemoSource(value = "/src/test/resources/META-INF/frontend/styles/styled-badges-demo-v25.css",
-    caption = "styled-badges-demo-v25.css")
+    caption = "styled-badges-demo.css", condition = "vaadin ge 25")
 @DemoSource(value = "/src/test/resources/META-INF/frontend/styles/fc-badge-list.css",
-    caption = "fc-badge-list.css")
+    caption = "fc-badge-list.css", condition = "vaadin ge 25")
 //#endif
 @PageTitle("Styled Badges Demo")
 @SuppressWarnings("serial")
