@@ -16,6 +16,10 @@ Responsive badge list component.
 * Read-only Binder Support
 * Label Support
 
+## Supported versions
+
+Supported versions: Vaadin 24-25 (add-on version 1.x)
+
 ## Online demo
 
 [Online demo here](http://addonsv24.flowingcode.com/badge-list)
