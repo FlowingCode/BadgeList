@@ -21,9 +21,10 @@ package com.flowingcode.vaadin.addons.badgelist;
 
 import com.flowingcode.vaadin.addons.demo.DemoSource;
 import com.flowingcode.vaadin.addons.demo.SourceCodeViewer;
+import com.vaadin.flow.component.badge.Badge;
+import com.vaadin.flow.component.badge.BadgeVariant;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.router.PageTitle;
@@ -32,31 +33,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @DemoSource
-//#if vaadin eq 0
 @DemoSource(value = "/src/test/resources/META-INF/frontend/styles/styled-badges-demo.css",
-    caption = "styled-badges-demo.css", condition = "vaadin eq 24")
-@DemoSource(value = "/src/test/resources/META-INF/frontend/styles/styled-badges-demo-v25.css",
-    caption = "styled-badges-demo.css", condition = "vaadin ge 25")
+    caption = "styled-badges-demo.css")
 @DemoSource(value = "/src/test/resources/META-INF/frontend/styles/fc-badge-list.css",
-    caption = "fc-badge-list.css", condition = "vaadin ge 25")
-//#endif
+    caption = "fc-badge-list.css")
 @PageTitle("Styled Badges Demo")
 @SuppressWarnings("serial")
-//#if vaadin eq 24
-@CssImport("./styles/styled-badges-demo.css")
-//#else
 @CssImport(value = "./styles/fc-badge-list.css", themeFor = "fc-badge-list")
-@CssImport("./styles/styled-badges-demo-v25.css")
-//#endif
+@CssImport("./styles/styled-badges-demo.css")
 @Route(value = "badge-list/styled", layout = BadgeListDemoView.class)
 public class StyledBadgesDemo extends BaseBadgeListDemo {
 
   public StyledBadgesDemo() {
-    // begin-block example1 
+    // begin-block example1
     List<Badge> badges1 = new ArrayList<>();
     for (int i = 0; i < 8; i++) {
       Badge badge = new Badge("BADGE" + (i + 1));
-      badge.addThemeName("error primary");
+      badge.addThemeVariants(BadgeVariant.ERROR);
       badges1.add(badge);
     }
     BadgeList badgeList1 = new BadgeList(badges1);
@@ -94,8 +87,9 @@ public class StyledBadgesDemo extends BaseBadgeListDemo {
     // begin-block example3
     List<Badge> badges3 = new ArrayList<>();
     for (int i = 0; i < 12; i++) {
-      Badge badge = new Badge(createIcon(VaadinIcon.CHECK), new Span("BADGE" + (i + 1)));
-      badge.addThemeName("success");
+      Badge badge = new Badge("BADGE" + (i + 1));
+      badge.setIcon(createIcon(VaadinIcon.CHECK));
+      badge.addThemeVariants(BadgeVariant.SUCCESS);
       badges3.add(badge);
     }
     BadgeList badgeList3 = new BadgeList(badges3);
@@ -113,9 +107,7 @@ public class StyledBadgesDemo extends BaseBadgeListDemo {
 
   // #if vaadin eq 0
   private Icon createIcon(VaadinIcon vaadinIcon) {
-    Icon icon = vaadinIcon.create();
-    icon.getStyle().set("padding", "var(--lumo-space-xs");
-    return icon;
+    return vaadinIcon.create();
   }
   // #endif
 }
