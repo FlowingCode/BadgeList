@@ -20,6 +20,7 @@
 package com.flowingcode.vaadin.addons.badgelist;
 
 import com.flowingcode.vaadin.addons.demo.DemoSource;
+import com.vaadin.flow.component.badge.Badge;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
