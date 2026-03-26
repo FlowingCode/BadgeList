@@ -19,10 +19,17 @@
  */
 package com.flowingcode.vaadin.addons;
 
+import com.flowingcode.vaadin.addons.demo.DynamicTheme;
 import com.vaadin.flow.component.page.AppShellConfigurator;
-import com.vaadin.flow.theme.Theme;
+import com.vaadin.flow.server.AppShellSettings;
 
-@Theme
 public class AppShellConfiguratorImpl implements AppShellConfigurator {
+
+    @Override
+    public void configurePage(AppShellSettings settings) {
+        if (DynamicTheme.isFeatureSupported()) {
+            DynamicTheme.LUMO.initialize(settings);
+        }
+    }
 
 }
