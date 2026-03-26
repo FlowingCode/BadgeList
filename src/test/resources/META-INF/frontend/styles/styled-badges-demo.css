@@ -18,10 +18,11 @@
  * #L%
  */
  
-fc-badge-list.styled-badges-second-example::part(overflow-badge), .custom-styled-badge {
-    background-color: lightgreen;
+fc-badge-list.styled-badges-second-example::part(overflow-badge), fc-badge-list .custom-styled-badge {
+	background-color: lightgreen;
     color: green;
     border: 1px green dashed;
     border-radius: 0;
 }
+
  
