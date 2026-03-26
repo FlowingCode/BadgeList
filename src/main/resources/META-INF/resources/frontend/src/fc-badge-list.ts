@@ -60,6 +60,10 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
       --badge-list-label-font-size: var(--lumo-font-size-s);
       --badge-list-label-margin-left: calc(var(--lumo-border-radius-m) / 4);
     }
+
+    vaadin-context-menu {
+      line-height: 0;
+    }
     
     [part="container"] ::slotted(span[theme~="badge"]) {
 	    margin: var(--badge-list-badges-margin);
