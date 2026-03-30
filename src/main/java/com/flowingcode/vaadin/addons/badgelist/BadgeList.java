@@ -24,7 +24,7 @@ import com.vaadin.flow.component.HasLabel;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.HasTheme;
 import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.badge.Badge;
 import com.vaadin.flow.component.dependency.JsModule;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,6 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 @JsModule("./src/fc-badge-list.ts")
-@CssImport("./styles/badge.css")
 @Tag("fc-badge-list")
 public class BadgeList extends Component implements HasTheme, HasSize, HasLabel {
 
