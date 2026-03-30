@@ -24,7 +24,7 @@
 }
 
 .badge-list-container .title-span {
-	font-size: var(--lumo-font-size-l);
+	font-size: var(--lumo-font-size-l, 1.125rem);
 	font-weight: 600;
 	display: block;
 	padding: 5px 0 10px 0;
