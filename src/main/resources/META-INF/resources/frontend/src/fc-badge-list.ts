@@ -98,6 +98,11 @@ export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(Lit
     }   
 
     [part="overflow-badge"] vaadin-icon {
+      width: 0.75em;
+      height: 0.75em;
+    }
+
+    :host([data-application-theme="lumo"]) [part="overflow-badge"] vaadin-icon {
       width: 1em;
       height: 1em;
     }
