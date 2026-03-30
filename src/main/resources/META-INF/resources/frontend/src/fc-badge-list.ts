@@ -20,13 +20,15 @@
 import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
 import '@vaadin/context-menu';
 import type { ContextMenuItem } from '@vaadin/context-menu';
-import badgeStylesContent from '../styles/badge.css?inline';
+import '@vaadin/badge';
 import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import { css, html, LitElement, unsafeCSS } from 'lit';
+import { ThemeDetectionMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-detection-mixin.js';
+import { css, html, LitElement } from 'lit';
 import { customElement, property, query, queryAssignedNodes, state } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 @customElement('fc-badge-list')
-export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
+export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(LitElement))) {
 
   @query('[part~="overflow-badge"]')
   _overflowBadge!: HTMLDivElement
@@ -50,13 +52,19 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
   private overflowItems: ContextMenuItem[] = [];
 
   static styles = [
-    unsafeCSS(badgeStylesContent),
-    css`      
-    
+    css`
+
     :host {
+      --badge-list-badges-margin: 0 0.25rem;
+      --badge-list-label-color: currentColor;
+      --badge-list-label-font-weight: 500;
+      --badge-list-label-font-size: 0.875rem;
+      --badge-list-label-margin-left: 0;
+    }
+
+    :host([data-application-theme="lumo"]) {
       --badge-list-badges-margin: 0 calc(var(--lumo-space-s) / 2);
       --badge-list-label-color: var(--lumo-secondary-text-color);
-      --badge-list-label-font-weight: 500;
       --badge-list-label-font-size: var(--lumo-font-size-s);
       --badge-list-label-margin-left: calc(var(--lumo-border-radius-m) / 4);
     }
@@ -64,12 +72,12 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
     vaadin-context-menu {
       line-height: 0;
     }
-    
-    [part="container"] ::slotted(span[theme~="badge"]) {
+
+    [part="container"] ::slotted(vaadin-badge) {
 	    margin: var(--badge-list-badges-margin);
     }
 
-    [part="container"] ::slotted(span[theme~="badge"]:first-child) {
+    [part="container"] ::slotted(vaadin-badge:first-child) {
 	    margin-left: 0;
     }
     
@@ -88,6 +96,11 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
     [part="overflow-badge"] {
       margin: var(--badge-list-badges-margin);
     }   
+
+    [part="overflow-badge"] vaadin-icon {
+      width: 1em;
+      height: 1em;
+    }
 
     :host(:not([has-label])) [part='label']{
       display:none;
@@ -223,6 +236,8 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
   }
 
   render() {
+    const isAura = this.getAttribute('data-application-theme') === 'aura';
+    const icon = isAura ? 'vaadin:plus' : 'lumo:plus';
     return html`
       <div part="label">
           <label for="container">${this.label}</label>
@@ -230,11 +245,11 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
       <div part="container" class="container" id="container">
    	    <slot name="badges"></slot>
         <vaadin-context-menu open-on="click" .items=${this.overflowItems}>
-        	<span part="overflow-badge" theme="badge ${this.theme}" class="overflow-badge" hidden>
-            <vaadin-icon icon="lumo:plus" style="padding: var(--lumo-space-xs)"></vaadin-icon>
+          <vaadin-badge part="overflow-badge" theme="${ifDefined(this.theme || undefined)}" hidden>
+            <vaadin-icon icon="${icon}" slot="icon"></vaadin-icon>
             ${this.hiddenCount}
-          </span>
-      	</vaadin-context-menu>        
+          </vaadin-badge>
+        </vaadin-context-menu>
       </div>
     `;
   }
