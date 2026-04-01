@@ -2,7 +2,7 @@
  * #%L
  * Badge List Add-on
  * %%
- * Copyright (C) 2023 - 2024 Flowing Code
+ * Copyright (C) 2023 - 2026 Flowing Code
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -250,13 +250,13 @@ export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(Lit
     const hiddenBadges = Array.from(this.querySelectorAll('[slot="badges"][hidden]'));
     this.overflowItems = [];
     hiddenBadges.forEach(hiddenBadge => {
-      const copy = hiddenBadge.cloneNode(true) as HTMLElement;
+      const copy = hiddenBadge.cloneNode(true);
       copy.removeAttribute("slot");
       copy.removeAttribute("hidden");
       copy.style.margin = '5px';
       // Copy computed host styles so clones render correctly inside the overlay.
       if (this._isAura) {
-        const computed = getComputedStyle(hiddenBadge as HTMLElement);
+        const computed = getComputedStyle(hiddenBadge);
         copy.style.color = computed.color;
         copy.style.backgroundColor = computed.backgroundColor;
         copy.style.backgroundClip = computed.backgroundClip;
