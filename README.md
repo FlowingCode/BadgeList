@@ -19,6 +19,7 @@ Responsive badge list component.
 ## Supported versions
 
 Supported versions: Vaadin 24-25 (add-on version 1.x)
+Supported versions: Vaadin 25.1+ (add-on version 2.x)
 
 ## Online demo
 
