@@ -147,6 +147,10 @@ export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(Lit
     this.theme = theme;
   }
 
+  private get _isAura(): boolean {
+    return this.getAttribute('data-application-theme') === 'aura';
+  }
+
   /**
    * Override getter from `ResizeMixin` to observe parent.
    *
@@ -241,8 +245,7 @@ export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(Lit
   }
 
   render() {
-    const isAura = this.getAttribute('data-application-theme') === 'aura';
-    const icon = isAura ? 'vaadin:plus' : 'lumo:plus';
+    const icon = this._isAura ? 'vaadin:plus' : 'lumo:plus';
     return html`
       <div part="label">
           <label for="container">${this.label}</label>
