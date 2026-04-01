@@ -97,6 +97,19 @@ export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(Lit
       margin: var(--badge-list-badges-margin);
     }   
 
+    :host([data-application-theme="aura"]) [part="overflow-badge"] {
+      color: var(--vaadin-badge-text-color, var(--aura-accent-text-color));
+      background: var(--vaadin-badge-background, var(--aura-accent-surface) padding-box);
+      border-color: var(--vaadin-badge-border-color, var(--aura-accent-border-color));
+      font-size: var(--vaadin-badge-font-size, var(--aura-font-size-s));
+      --aura-surface-level: 1;
+    }
+
+    :host([data-application-theme="aura"]) [part="overflow-badge"]:is([theme~='filled'], [theme~='dot']) {
+      background: var(--aura-accent-color);
+      color: var(--aura-accent-contrast-color);
+    }
+
     [part="overflow-badge"] vaadin-icon {
       width: 0.75em;
       height: 0.75em;
@@ -234,10 +247,19 @@ export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(Lit
     const hiddenBadges = Array.from(this.querySelectorAll('[slot="badges"][hidden]'));
     this.overflowItems = [];
     hiddenBadges.forEach(hiddenBadge => {
-      const copy = hiddenBadge.cloneNode(true);
+      const copy = hiddenBadge.cloneNode(true) as HTMLElement;
       copy.removeAttribute("slot");
       copy.removeAttribute("hidden");
       copy.style.margin = '5px';
+      // Copy computed host styles so clones render correctly inside the overlay.
+      if (this._isAura) {
+        const computed = getComputedStyle(hiddenBadge as HTMLElement);
+        copy.style.color = computed.color;
+        copy.style.backgroundColor = computed.backgroundColor;
+        copy.style.backgroundClip = computed.backgroundClip;
+        copy.style.borderColor = computed.borderTopColor;
+        copy.style.fontSize = computed.fontSize;
+      }
       const item = document.createElement('div');
       item.appendChild(copy);
       this.overflowItems.push({ component: item });
