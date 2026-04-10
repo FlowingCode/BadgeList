@@ -2,7 +2,7 @@
  * #%L
  * Badge List Add-on
  * %%
- * Copyright (C) 2023 - 2024 Flowing Code
+ * Copyright (C) 2023 - 2026 Flowing Code
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,15 @@
 import { ResizeMixin } from '@vaadin/component-base/src/resize-mixin.js';
 import '@vaadin/context-menu';
 import type { ContextMenuItem } from '@vaadin/context-menu';
-import badgeStylesContent from '../styles/badge.css?inline';
+import '@vaadin/badge';
 import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
-import { css, html, LitElement, unsafeCSS } from 'lit';
+import { ThemeDetectionMixin } from '@vaadin/vaadin-themable-mixin/vaadin-theme-detection-mixin.js';
+import { css, html, LitElement } from 'lit';
 import { customElement, property, query, queryAssignedNodes, state } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 @customElement('fc-badge-list')
-export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
+export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(LitElement))) {
 
   @query('[part~="overflow-badge"]')
   _overflowBadge!: HTMLDivElement
@@ -49,14 +51,27 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
   @state()
   private overflowItems: ContextMenuItem[] = [];
 
+  @property({ attribute: 'data-application-theme' })
+  _applicationTheme: string | null = null;
+
+  private get _isAura(): boolean {
+    return this._applicationTheme === 'aura';
+  }
+
   static styles = [
-    unsafeCSS(badgeStylesContent),
-    css`      
-    
+    css`
+
     :host {
+      --badge-list-badges-margin: 0 0.25rem;
+      --badge-list-label-color: currentColor;
+      --badge-list-label-font-weight: 500;
+      --badge-list-label-font-size: 0.875rem;
+      --badge-list-label-margin-left: 0;
+    }
+
+    :host([data-application-theme="lumo"]) {
       --badge-list-badges-margin: 0 calc(var(--lumo-space-s) / 2);
       --badge-list-label-color: var(--lumo-secondary-text-color);
-      --badge-list-label-font-weight: 500;
       --badge-list-label-font-size: var(--lumo-font-size-s);
       --badge-list-label-margin-left: calc(var(--lumo-border-radius-m) / 4);
     }
@@ -64,12 +79,12 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
     vaadin-context-menu {
       line-height: 0;
     }
-    
-    [part="container"] ::slotted(span[theme~="badge"]) {
+
+    [part="container"] ::slotted(vaadin-badge) {
 	    margin: var(--badge-list-badges-margin);
     }
 
-    [part="container"] ::slotted(span[theme~="badge"]:first-child) {
+    [part="container"] ::slotted(vaadin-badge:first-child) {
 	    margin-left: 0;
     }
     
@@ -88,6 +103,29 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
     [part="overflow-badge"] {
       margin: var(--badge-list-badges-margin);
     }   
+
+    :host([data-application-theme="aura"]) [part="overflow-badge"] {
+      color: var(--vaadin-badge-text-color, var(--aura-accent-text-color));
+      background: var(--vaadin-badge-background, var(--aura-accent-surface) padding-box);
+      border-color: var(--vaadin-badge-border-color, var(--aura-accent-border-color));
+      font-size: var(--vaadin-badge-font-size, var(--aura-font-size-s));
+      --aura-surface-level: 1;
+    }
+
+    :host([data-application-theme="aura"]) [part="overflow-badge"]:is([theme~='filled'], [theme~='dot']) {
+      background: var(--aura-accent-color);
+      color: var(--aura-accent-contrast-color);
+    }
+
+    [part="overflow-badge"] vaadin-icon {
+      width: 0.75em;
+      height: 0.75em;
+    }
+
+    :host([data-application-theme="lumo"]) [part="overflow-badge"] vaadin-icon {
+      width: 1em;
+      height: 1em;
+    }
 
     :host(:not([has-label])) [part='label']{
       display:none;
@@ -216,6 +254,18 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
       copy.removeAttribute("slot");
       copy.removeAttribute("hidden");
       copy.style.margin = '5px';
+      // Copy computed host styles so clones render correctly inside the overlay.
+      if (this._isAura) {
+        const computed = getComputedStyle(hiddenBadge);
+        copy.style.color = computed.color;
+        copy.style.backgroundColor = computed.backgroundColor;
+        copy.style.backgroundClip = computed.backgroundClip;
+        copy.style.borderTopColor = computed.borderTopColor;
+        copy.style.borderRightColor = computed.borderRightColor;
+        copy.style.borderBottomColor = computed.borderBottomColor;
+        copy.style.borderLeftColor = computed.borderLeftColor;
+        copy.style.fontSize = computed.fontSize;
+      }
       const item = document.createElement('div');
       item.appendChild(copy);
       this.overflowItems.push({ component: item });
@@ -223,6 +273,7 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
   }
 
   render() {
+    const icon = this._isAura ? 'vaadin:plus' : 'lumo:plus';
     return html`
       <div part="label">
           <label for="container">${this.label}</label>
@@ -230,11 +281,11 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
       <div part="container" class="container" id="container">
    	    <slot name="badges"></slot>
         <vaadin-context-menu open-on="click" .items=${this.overflowItems}>
-        	<span part="overflow-badge" theme="badge ${this.theme}" class="overflow-badge" hidden>
-            <vaadin-icon icon="lumo:plus" style="padding: var(--lumo-space-xs)"></vaadin-icon>
+          <vaadin-badge part="overflow-badge" theme="${ifDefined(this.theme || undefined)}" hidden>
+            <vaadin-icon icon="${icon}" slot="icon"></vaadin-icon>
             ${this.hiddenCount}
-          </span>
-      	</vaadin-context-menu>        
+          </vaadin-badge>
+        </vaadin-context-menu>
       </div>
     `;
   }

@@ -2,7 +2,7 @@
  * #%L
  * Badge List Add-on
  * %%
- * Copyright (C) 2023 - 2024 Flowing Code
+ * Copyright (C) 2023 - 2026 Flowing Code
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@
 package com.flowingcode.vaadin.addons.badgelist;
 
 import com.flowingcode.vaadin.addons.demo.DemoSource;
+import com.vaadin.flow.component.badge.Badge;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
