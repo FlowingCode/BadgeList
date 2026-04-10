@@ -51,6 +51,13 @@ export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(Lit
   @state()
   private overflowItems: ContextMenuItem[] = [];
 
+  @property({ attribute: 'data-application-theme' })
+  _applicationTheme: string | null = null;
+
+  private get _isAura(): boolean {
+    return this._applicationTheme === 'aura';
+  }
+
   static styles = [
     css`
 
@@ -158,10 +165,6 @@ export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(Lit
   
   _set_theme(theme : string) {
     this.theme = theme;
-  }
-
-  private get _isAura(): boolean {
-    return this.getAttribute('data-application-theme') === 'aura';
   }
 
   /**
