@@ -260,7 +260,10 @@ export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(Lit
         copy.style.color = computed.color;
         copy.style.backgroundColor = computed.backgroundColor;
         copy.style.backgroundClip = computed.backgroundClip;
-        copy.style.borderColor = computed.borderTopColor;
+        copy.style.borderTopColor = computed.borderTopColor;
+        copy.style.borderRightColor = computed.borderRightColor;
+        copy.style.borderBottomColor = computed.borderBottomColor;
+        copy.style.borderLeftColor = computed.borderLeftColor;
         copy.style.fontSize = computed.fontSize;
       }
       const item = document.createElement('div');
