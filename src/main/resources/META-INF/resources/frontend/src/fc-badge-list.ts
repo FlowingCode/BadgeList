@@ -278,7 +278,7 @@ export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(Lit
       <div part="container" class="container" id="container">
    	    <slot name="badges"></slot>
         <vaadin-context-menu open-on="click" .items=${this.overflowItems}>
-          <vaadin-badge part="overflow-badge" theme="${ifDefined(this.theme ?? undefined)}" hidden>
+          <vaadin-badge part="overflow-badge" theme="${ifDefined(this.theme || undefined)}" hidden>
             <vaadin-icon icon="${icon}" slot="icon"></vaadin-icon>
             ${this.hiddenCount}
           </vaadin-badge>
