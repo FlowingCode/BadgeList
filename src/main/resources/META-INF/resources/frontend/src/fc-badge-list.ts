@@ -165,7 +165,7 @@ export class BadgeList extends ResizeMixin(ThemableMixin(LitElement)) {
     // Reset overflow badge for overflow calculations and get width
     overflow.removeAttribute("hidden");
     let overflowStyle = getComputedStyle(overflow);
-    let overflowWidth = overflow.offsetWidth + parseInt(overflowStyle.marginInline);
+    let overflowWidth = overflow.offsetWidth + parseInt(overflowStyle.marginInlineStart) + parseInt(overflowStyle.marginInlineEnd);
 
     // Reset badges for calculations
     badges.forEach(badge => {
