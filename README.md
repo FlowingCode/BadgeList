@@ -19,7 +19,8 @@ Responsive badge list component.
 ## Supported versions
 
 Supported versions: Vaadin 24-25 (add-on version 1.x)
-Supported versions: Vaadin 25.1+ (add-on version 2.x)
+Supported versions: Vaadin 25.1 (add-on version 2.0)
+Supported versions: Vaadin 25.2+ (add-on version 2.1)
 
 ## Online demo
 
@@ -103,19 +104,6 @@ This add-on is distributed under Apache License 2.0. For license terms, see LICE
 Badge List Add-on is written by Flowing Code S.A.
 
 # Developer Guide
-
-## Enabling the Badge component
-
-Since version 2.0.0, this add-on uses the preview version of Badge component from Vaadin core (`com.vaadin.flow.component.badge.Badge`). As is currently an experimental feature it must be explicitly enabled in your project before using this add-on.
-
-You can enable it in one of two ways:
-
-- Through **Vaadin Copilot**, in the experimental features panel.
-- By adding the following line to `src/main/resources/vaadin-featureflags.properties` in your project:
-
-```properties
-com.vaadin.experimental.badgeComponent=true
-```
 
 ## Getting started
 
