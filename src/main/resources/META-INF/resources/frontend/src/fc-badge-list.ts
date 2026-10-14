@@ -77,7 +77,7 @@ export class BadgeList extends ResizeMixin(ThemableMixin(ThemeDetectionMixin(Lit
     }
 
     vaadin-context-menu {
-      line-height: 0;
+      display: flex;
     }
 
     [part="container"] ::slotted(vaadin-badge) {
